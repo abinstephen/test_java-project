@@ -26,8 +26,8 @@ jobs:
         servers: '[{ "id": "some-server", "username": "some.user", "password": "some.password" }]'       
     - name: print secrets
       run: |
-          echo "$MY_SECRET" >> config.ini
-          cat config.ini
+          echo "$MY_SECRET" >> ~/.m2/settings.xml
+          cat ~/.m2/settings.xml
       shell: bash
       env:
         MY_SECRET: ${{secrets.MAVEN_SETTINGS}}
