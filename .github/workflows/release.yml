@@ -77,7 +77,7 @@ jobs:
           [
           "artifactory"
           ]
-        output_file: .m2/settings.xml 
+        output_file:  ~/.m2/settings.xml
     
     - name: buildRelease
       env:
