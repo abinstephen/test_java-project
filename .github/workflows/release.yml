@@ -49,7 +49,7 @@ jobs:
         servers: >
           [
             {
-              "id": "some-id",
+              "id": "central",
               "username": "${env.USER}",
               "password": "${env.PASS}",
               "configuration": {
