@@ -18,20 +18,67 @@ jobs:
         git config user.email "abinstephen@gmail.com"
         git config user.name "abinstephen"
        
+    #- name: maven-settings-xml-action
+     # uses: whelk-io/maven-settings-xml-action@v20
+     # with:
+      #  repositories: '[{ "id": "some-repository", "url": "http://some.repository.url" }]'
+      #  plugin_repositories: '[{ "id": "some-plugin-repository", "url": "http://some.plugin.repository.url" }]'
+      # servers: '[{ "id": "some-server", "username": "some.user", "password": "some.password" }]' 
+      
     - name: maven-settings-xml-action
       uses: whelk-io/maven-settings-xml-action@v20
       with:
-        repositories: '[{ "id": "some-repository", "url": "http://some.repository.url" }]'
-        plugin_repositories: '[{ "id": "some-plugin-repository", "url": "http://some.plugin.repository.url" }]'
-        servers: '[{ "id": "some-server", "username": "some.user", "password": "some.password" }]'       
-    - name: print secrets
-      run: |
-          echo "$MY_SECRET" >> ~/.m2/settings.xml
-          cat ~/.m2/settings.xml
-      shell: bash
-      env:
-        MY_SECRET: ${{secrets.MAVEN_SETTINGS}}
-  
+        repositories: >
+          [
+            {
+              "id": "some-repository",
+              "name": "some-repository-name",
+              "url": "http://some.repository.url",
+              "releases": {
+                 "enabled": "true",
+                "updatePolicy": "always",
+                "checksumPolicy": "fail"
+              },
+              "snapshots": {
+                "enabled": "false",
+                "updatePolicy": "always",
+                "checksumPolicy": "fail"
+              }
+            }
+          ]
+        servers: >
+          [
+            {
+              "id": "some-id",
+              "username": "${env.USER}",
+              "password": "${env.PASS}",
+              "configuration": {
+              "httpConfiguration": {
+                 "all": {
+                   "usePreemptive": "true"
+                 }
+               }
+             }
+           }
+          ]
+        profiles: >
+          [
+            {
+              "id": "foo.profile",
+              "name": "foo.profile",
+              "url": "http://foo.bar.profile",
+              "properties": {
+                "foo": "property-1",
+                "bar": "property-2"
+              }
+            }
+          ]
+        active_profiles: >
+          [
+          "artifactory"
+          ]
+        output_file: .m2/settings.xml 
+    
     - name: buildRelease
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
@@ -44,7 +91,6 @@ jobs:
       
     - name: Run script file
       run: |
-         cat ~/.m2/settings.xml
          cat ~/.m2/settings.xml
          docker -v
       shell: bash
