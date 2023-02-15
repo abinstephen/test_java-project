@@ -87,6 +87,13 @@
             -->
         </plugins>
     </build>
+    <distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>a0tk4qvgn68j8-artifactory-primary-0-snapshots</name>
+        <url>https://abinartifacts.jfrog.io/artifactory/libs-snapshot</url>
+    </snapshotRepository>
+    </distributionManagement>
      <repositories>
         <repository>
             <id>central</id>
