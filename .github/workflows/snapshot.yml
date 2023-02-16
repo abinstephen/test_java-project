@@ -37,7 +37,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: deploy
-      run: mvn deploy --update-snapshots --no-transfer-progress  --settings /home/runner/work/test_java-project/test_java-project/settings.xml 
+      run: mvn deploy --update-snapshots --no-transfer-progress -Dinternal.repo.pw=cmVmdGtuOjAxOjE3MDgwMjUyOTc6cDJLdktZenFnOFZ3dEhpQWRFWU5BV0RNYXlC  --settings /home/runner/work/test_java-project/test_java-project/settings.xml 
       
   Evaluate:
     runs-on: ubuntu-latest
