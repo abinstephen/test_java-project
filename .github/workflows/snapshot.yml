@@ -33,11 +33,11 @@ jobs:
       
   Run_deploy:
     runs-on: ubuntu-latest
-    needs: [Run_Unit_Tests]
+    needs: [Run_Functional_Tests]
     steps:
     - uses: actions/checkout@v2
     - name: deploy
-      run: mvn deploy --update-snapshots --no-transfer-progress     
+      run: mvn deploy --update-snapshots --no-transfer-progress  --settings /home/runner/work/test_java-project/test_java-project/settings.xml 
       
   Evaluate:
     runs-on: ubuntu-latest
