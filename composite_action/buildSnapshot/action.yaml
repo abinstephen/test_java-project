@@ -13,4 +13,4 @@ runs:
       shell: bash
       run: | 
             mvn --version
-            mvn clean install -Dmaven.test.skip=true --update-snapshots --no-transfer-progress --settings $GITHUB_ACTION_PATH/settings.xml 
+            mvn clean install -Dmaven.test.skip=true --update-snapshots --no-transfer-progress --settings $GITHUB_ACTION/settings.xml 
