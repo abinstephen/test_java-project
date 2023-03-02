@@ -1,4 +1,6 @@
-on: [workflow_dispatch, workflow_call]
+name: Test
+
+on: workflow_dispatch
 
 jobs:
   Build_Code:
