@@ -1,14 +1,10 @@
 name: Build Snapshot 
 description: Build (Snapshot) with Maven
 inputs:
-  jdk_version:  # id of input
-    description: Version of JDK to be installed
+  flags:  # id of input
+    description: flags used during the buildd
     required: true
-    default: '14'
-  maven_version:
-    description: Version of Maven to be installed
-    required: true
-    default: '3.6.3'
+    default: ''
 
 runs:
   using: "composite"
