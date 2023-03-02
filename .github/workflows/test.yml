@@ -14,5 +14,8 @@ jobs:
         jdk_version: '14'
         maven_version: '3.8.1'
 
-    - name: buildSnapshot
-      run: mvn clean install -Dmaven.test.skip=true --update-snapshots --no-transfer-progress
+    - id: foo
+      uses: composite_action/buildSnapshot@v1
+      with:
+        flags: 'hello'
+
