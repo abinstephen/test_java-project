@@ -14,7 +14,7 @@ jobs:
         jdk_version: '14'
         maven_version: '3.8.1'
 
-    - id: foo
+    - id: buildSnapshot
       uses: ./composite_action/buildSnapshot
       with:
         flags: 'hello'
