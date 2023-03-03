@@ -13,7 +13,13 @@ jobs:
       with:
         jdk_version: '14'
         maven_version: '3.8.1'
-
+        
+    -   uses: actions/checkout@v3
+        with:
+          repository: theonlyfaddyinc/global_configs
+          ref: main
+          path: ${{ github.workspace }}/global_configs
+          
     - id: buildSnapshot
       uses: ./composite_action/buildSnapshot
       with:
