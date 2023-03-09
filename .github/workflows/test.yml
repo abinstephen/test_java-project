@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2 
-    - uses: theonlyfaddyinc/devops-standard-library/composite_actions/setup_build_tools/setup-jdk-maven@main
+    - uses: theonlyfaddyinc/devops-standard-library/composite_actions/setup-jdk-maven@main
       with:
         jdk_version: '14' 
     - uses: actions/checkout@v3
