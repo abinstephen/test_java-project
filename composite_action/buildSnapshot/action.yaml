@@ -4,7 +4,7 @@ inputs:
   flags:  # id of input
     description: flags used during the buildd
     required: true
-    default: ''
+    default: 'hello'
 
 runs:
   using: "composite"
@@ -13,4 +13,4 @@ runs:
       shell: bash
       run: | 
             mvn --version
-            mvn clean install -Dmaven.test.skip=true --update-snapshots --no-transfer-progress --settings ${{ github.workspace }}/global_configs/settings.xml 
+            mvn clean install -Dmaven.test.skip=true --update-snapshots --no-transfer-progress --settings ${{ github.workspace }}/global_configs/settings.xml ${{ inputs.flags }}
